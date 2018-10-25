@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.1'
   s.license     = %q{BSD-3}
 
-  s.files        = `git ls-files`.split('\n')
-  s.test_files   = `git ls-files -- spec/*`.split('\n')
+  s.files        = `git ls-files`.split($\)
+  s.test_files   = `git ls-files -- spec/*`.split($\)
   s.require_path = 'lib'
   s.requirements << 'none'
 
