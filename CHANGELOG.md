@@ -1,5 +1,10 @@
 ## Master (unreleased)
 
+## Solidus Auth Devise v2.1.0 (devise_token_auth version) (2018-10-25)
+
+* Stop generating spree_api_key (because it's supposed to be replaced by devise_token_auth stuff)
+* Remove spree_api_key functionality entirely
+
 ## Solidus Auth Devise v2.1.0 (2018-01-22)
 
 * Avoid requiring deface on Solidus 2.5+.

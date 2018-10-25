@@ -1,7 +1,7 @@
 RSpec.describe Spree::CheckoutController, type: :controller do
 
   let(:order) { create(:order_with_line_items, email: nil, user: nil, guest_token: token) }
-  let(:user)  { build(:user, spree_api_key: 'fake') }
+  let(:user)  { build(:user) }
   let(:token) { 'some_token' }
   let(:cookie_token) { token }
 

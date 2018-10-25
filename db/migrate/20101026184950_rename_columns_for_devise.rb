@@ -1,8 +1,12 @@
 class RenameColumnsForDevise < SolidusSupport::Migration[4.2]
   def up
     return if column_exists?(:spree_users, :password_salt)
-    rename_column :spree_users, :crypted_password, :encrypted_password
-    rename_column :spree_users, :salt, :password_salt
+    if column_exists?(:spree_users, :crypted_password)
+      rename_column :spree_users, :crypted_password, :encrypted_password
+    end
+    if column_exists?(:spree_users, :salt)
+      rename_column :spree_users, :salt, :password_salt
+    end
     rename_column :spree_users, :remember_token_expires_at, :remember_created_at
     rename_column :spree_users, :login_count, :sign_in_count
     rename_column :spree_users, :failed_login_count, :failed_attempts

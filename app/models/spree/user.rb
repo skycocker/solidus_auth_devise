@@ -9,11 +9,6 @@ module Spree
     acts_as_paranoid
     after_destroy :scramble_email_and_password
 
-    def password=(new_password)
-      generate_spree_api_key if new_password.present? && spree_api_key.present?
-      super
-    end
-
     before_validation :set_login
 
     users_table_name = User.table_name

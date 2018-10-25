@@ -14,38 +14,6 @@ RSpec.describe Spree::User, type: :model do
       expect(Spree::UserMailer).to receive(:reset_password_instructions).with(user, anything, {}).and_return(double(deliver: true))
       expect { user.send_reset_password_instructions }.to change(user, :reset_password_token).to be_present
     end
-
-    it "regenerates a spree api key on successful password change" do
-      user.generate_spree_api_key!
-
-      expect {
-        user.password = "123456678"
-        user.password_confirmation = "123456678"
-        user.save!
-      }.to change(user, :spree_api_key)
-      expect(user.spree_api_key).to be_present
-    end
-
-    it "does not generate a spree api key if password is empty" do
-      user.generate_spree_api_key!
-
-      expect {
-        user.password = ""
-        user.password_confirmation = ""
-        user.save!
-      }.not_to change(user, :spree_api_key)
-    end
-
-    it "does not generate a spree api key on password change if no key existed previously" do
-      user.clear_spree_api_key!
-
-      expect {
-        user.password = "123456678"
-        user.password_confirmation = "123456678"
-        user.save!
-      }.not_to change(user, :spree_api_key)
-      expect(user.reload.spree_api_key).to be_nil
-    end
   end
 
   describe '#destroy' do
