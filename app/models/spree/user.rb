@@ -6,6 +6,8 @@ module Spree
            :rememberable, :trackable, :validatable, :encryptable
     devise :confirmable if Spree::Auth::Config[:confirmable]
 
+    include DeviseTokenAuth::Concerns::User
+
     acts_as_paranoid
     after_destroy :scramble_email_and_password
 
