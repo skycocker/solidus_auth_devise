@@ -1,3 +1,8 @@
+Fork summary
+============
+
+This is a [solidus_devise_token_auth](https://github.com/skycocker/solidus_devise_token_auth) compatible fork of solidus_auth_devise.
+
 Solidus Auth (Devise)
 =====================
 
